@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import CityInput from './Components/CityInput/CityInput';
+import VirusGraph from './Components/VirusGraph/graph'
 
 function App() {
+  const [data,setData]=useState("")
+  const handleFormData=(country)=>{
+    setData(country)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CityInput onFormSubmit={handleFormData}/>
+      <VirusGraph Countryname={data}/>
     </div>
   );
 }
